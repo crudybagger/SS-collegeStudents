@@ -8,14 +8,13 @@ app.use(cors());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 // use views
-app.set('views', './views');
 require('dotenv').config();
 
 mongoose.connect(process.env.DB, { useNewUrlParser: true, useUnifiedTopology: true });
 
 app.get('/', (req, res) => {
     // send file in views/index.html by specifying the root to views
-    res.sendFile('/views/index.html', { root: __dirname });    
+    res.send('/views/index.html', { root: __dirname });    
 });
 
 app.post('/roll', async (req, res) => {

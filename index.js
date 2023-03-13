@@ -3,7 +3,6 @@ const app = express();
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const cors = require('cors');
-const ejs = require('ejs');
 const Roll = require('./models/Roll');
 
 app.use(cors());
@@ -11,14 +10,13 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static('public'));
 // use views
-app.set('view engine', 'ejs');
-
+app.set('views', './views');
 require('dotenv').config();
 
 mongoose.connect(process.env.DB, { useNewUrlParser: true, useUnifiedTopology: true });
 
 app.get('/', (req, res) => {
-    res.render('index.ejs');
+    res.send('index.html');
     }
 );
 
@@ -36,7 +34,7 @@ app.post('/roll', async (req, res) => {
 });
 
 app.get('/fail', (req, res) => {
-    res.render('fail.ejs');
+    res.send('fail.html');
     }
 );
 

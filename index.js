@@ -15,8 +15,7 @@ require('dotenv').config();
 mongoose.connect(process.env.DB, { useNewUrlParser: true, useUnifiedTopology: true });
 
 app.get('/', (req, res) => {
-    // send file in views/index.html by specifying the root to views
-    res.sendFile('/public/index.html', { root: __dirname });    
+    res.sendFile('/index.html');    
 });
 
 app.post('/roll', async (req, res) => {
@@ -31,9 +30,8 @@ app.post('/roll', async (req, res) => {
 });
 
 app.get('/fail', (req, res) => {
-    res.sendFile('/public/fail.html', { root: __dirname });
-    }
-);
+    res.send('<h1>Roll Number already Exists !</h1><button ><a href="/">Go Back</a></button>');
+});
 
 app.listen(process.env.PORT || 3000, () => {
     console.log('Server running on port 3000');

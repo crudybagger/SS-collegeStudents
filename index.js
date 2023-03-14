@@ -15,7 +15,7 @@ require('dotenv').config();
 mongoose.connect(process.env.DB, { useNewUrlParser: true, useUnifiedTopology: true });
 
 app.get('/', (req, res) => {
-    res.send("<form action='/roll' method='POST'><input type='text' name='roll' placeholder='Enter roll number'><button type='submit'>Submit</button></form>");    
+    res.send("<form style='' action='/roll' method='POST'><input style='width:200px;height:100px;' type='number' name='roll' placeholder='Enter roll number'><button style='width:200px;height:100px;' type='submit'>Submit</button></form>");    
 });
 
 app.post('/roll', async (req, res) => {
